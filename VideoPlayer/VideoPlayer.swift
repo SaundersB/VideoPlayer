@@ -15,15 +15,14 @@ class VideoPlayer: UIViewController {
     @IBOutlet weak var stack_view: UIStackView!
     @IBOutlet weak var play_button: UIButton!
     
-    @IBOutlet weak var file_list: UILabel!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         video_player_header.font = UIFont (name: "Helvetica Neue", size: 30)
         video_player_header.textAlignment = NSTextAlignment.Center;
         play_button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
-        getFiles()
+        play_button.layer.cornerRadius = 5
+
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,28 +52,6 @@ class VideoPlayer: UIViewController {
             debugPrint("Generic error")
         }
     }
-    
-    
-    func getFiles() {
-        let filemanager:NSFileManager = NSFileManager()
-        let files = filemanager.enumeratorAtPath(NSHomeDirectory())
-        var listOfFiles: [String] = []
-        while let file = files?.nextObject() {
-            print(file)
-            listOfFiles.append(file as! String)
-        }
-        
-        file_list.text = "Local Files: " + String(listOfFiles)
-        file_list.textAlignment = NSTextAlignment.Center
-        file_list.numberOfLines = 10
-    }
-    
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        var orientation = UIInterfaceOrientationMask()
-        orientation = [UIInterfaceOrientationMask.Portrait, UIInterfaceOrientationMask.PortraitUpsideDown]
-        return orientation
-    }
-    
 }
 
 enum AppError : ErrorType {

@@ -14,6 +14,9 @@ import AVKit
 
 class ViewController: UIViewController {
     
+    // Application header
+    @IBOutlet weak var video_player_header: UILabel!
+    
     // Test Buttons
     @IBOutlet weak var play_button: UIButton!
     @IBOutlet weak var play_local_button: UIButton!
@@ -41,7 +44,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         //let url = NSURL(string:
         //    "http://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v")
-        
+        video_player_header.font = UIFont (name: "Helvetica Neue", size: 30)
+        video_player_header.textAlignment = NSTextAlignment.Center;
+
         play_button.layer.cornerRadius = 5
         play_local_button.layer.cornerRadius = 5
     }

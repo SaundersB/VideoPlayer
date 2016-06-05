@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  AppDelegae.swift
 //  VideoPlayer
 //
 //  Created by Brandon_Saunders on 6/4/16.

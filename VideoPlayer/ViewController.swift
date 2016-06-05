@@ -37,11 +37,6 @@ class ViewController: UIViewController {
     let height = UIScreen.mainScreen().bounds.size.height
     let width = UIScreen.mainScreen().bounds.size.width
     
-    // Controller Buttons
-    let pause_button = UIButton(frame: CGRect(x: 100, y: 500, width: 75, height: 35))
-    let resume_button = UIButton(frame: CGRect(x: 200, y: 500, width: 75, height: 35))
-    let destroy_video_player_button = UIButton(frame: CGRect(x: 300, y: 500, width: 75, height: 35))
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //let url = NSURL(string:
@@ -49,7 +44,6 @@ class ViewController: UIViewController {
         
         play_button.layer.cornerRadius = 5
         play_local_button.layer.cornerRadius = 5
-        
     }
     
     @IBAction func play_online_video(sender: AnyObject) {
@@ -196,10 +190,8 @@ class ViewController: UIViewController {
             self.player.pause()
             self.playerLayer.removeFromSuperlayer()
         }
-        pause_button.hidden = true
-        resume_button.hidden = true
-        destroy_video_player_button.hidden = true
         seekSlider.hidden = true
+        invisibleButton.hidden = true
     }
     
     

@@ -25,24 +25,9 @@ class VideoPlayer: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        getFiles()
     }
     
-    private var firstAppear = true
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        if firstAppear {
-            do {
-                try playVideo()
-                firstAppear = false
-            } catch AppError.InvalidResource(let name, let type) {
-                debugPrint("Could not find resource \(name).\(type)")
-            } catch {
-                debugPrint("Generic error")
-            }
-            
-        }
-    }
     
     private func playVideo() throws {
         guard let path = NSBundle.mainBundle().pathForResource("video", ofType:"m4v") else {
@@ -56,11 +41,9 @@ class VideoPlayer: UIViewController {
         }
     }
     
-    
     @IBAction func play_video(sender: AnyObject) {
         do {
             try playVideo()
-            firstAppear = false
         } catch AppError.InvalidResource(let name, let type) {
             debugPrint("Could not find resource \(name).\(type)")
         } catch {
@@ -68,17 +51,6 @@ class VideoPlayer: UIViewController {
         }
     }
     
-    func loadFiles() {
-        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-        do {
-            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
-            print(directoryContents.description)
-            
-            
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-    }
     
     func getFiles() {
         let filemanager:NSFileManager = NSFileManager()

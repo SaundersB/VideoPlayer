@@ -17,37 +17,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P2n-hj-fi2">
-                                <rect key="frame" x="234" y="279" width="120" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OF5-ck-VeF">
+                                <rect key="frame" x="154" y="198" width="120" height="30"/>
                                 <state key="normal" title="Play Online Video"/>
                                 <connections>
-                                    <action selector="play_online_video:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ERy-CB-Uho"/>
+                                    <action selector="play_online_video:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XqP-7N-VRm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXp-vM-ff3">
-                                <rect key="frame" x="238" y="372" width="113" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0G5-Ql-zC3">
+                                <rect key="frame" x="154" y="338" width="113" height="30"/>
                                 <state key="normal" title="Play Local Video"/>
                                 <connections>
-                                    <segue destination="nOl-Ng-GFb" kind="show" id="upx-SV-ETW"/>
+                                    <segue destination="nOl-Ng-GFb" kind="show" id="Pz8-9i-aiG"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="zXp-vM-ff3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i5E-TC-xRY"/>
-                            <constraint firstItem="P2n-hj-fi2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mjp-rx-HCd"/>
-                            <constraint firstItem="P2n-hj-fi2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v0J-Ez-8fh"/>
-                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="play_button" destination="OF5-ck-VeF" id="PjL-8F-7kT"/>
+                        <outlet property="play_local_button" destination="0G5-Ql-zC3" id="mDi-35-SSa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="272" y="373"/>
         </scene>
-        <!--View Controller-->
+        <!--AV Player View Controller-->
+        <scene sceneID="fvl-Q2-jaM">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="k63-nf-N4D" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4hW-64-2g0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="958" y="373"/>
+        </scene>
+        <!--Video Player-->
         <scene sceneID="Qbi-C3-4op">
             <objects>
-                <viewController id="nOl-Ng-GFb" sceneMemberID="viewController">
+                <viewController id="nOl-Ng-GFb" customClass="VideoPlayer" customModule="VideoPlayer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K2L-38-ZAQ"/>
                         <viewControllerLayoutGuide type="bottom" id="rur-bO-xle"/>
@@ -56,15 +63,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Video Player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mts-4o-XGi">
-                                <rect key="frame" x="71" y="28" width="96" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9nc-vB-5kD">
                                 <rect key="frame" x="187" y="517" width="51" height="30"/>
                                 <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="play_video:" destination="nOl-Ng-GFb" eventType="touchUpInside" id="Cc9-9s-1rF"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2i9-Zw-6OH">
                                 <rect key="frame" x="11" y="149" width="269" height="281"/>
@@ -72,13 +76,34 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0p-jv-jvz">
+                                <rect key="frame" x="26" y="28" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="H3k-SO-3qJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Video Player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mts-4o-XGi">
+                                <rect key="frame" x="246" y="45" width="96" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mts-4o-XGi" firstAttribute="centerX" secondItem="pOs-fD-59C" secondAttribute="centerX" id="rVf-qm-fpH"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="file_list" destination="2i9-Zw-6OH" id="7xA-HB-83v"/>
+                        <outlet property="play_button" destination="9nc-vB-5kD" id="ayq-MK-7En"/>
+                        <outlet property="video_player_header" destination="mts-4o-XGi" id="82K-Fq-ASK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iad-LS-IEb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="248" y="1057"/>
+            <point key="canvasLocation" x="231" y="1159"/>
         </scene>
     </scenes>
 </document>

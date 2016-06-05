@@ -17,15 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OF5-ck-VeF">
-                                <rect key="frame" x="154" y="198" width="120" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OF5-ck-VeF">
+                                <rect key="frame" x="150" y="108" width="120" height="30"/>
                                 <state key="normal" title="Play Online Video"/>
                                 <connections>
                                     <action selector="play_online_video:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XqP-7N-VRm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0G5-Ql-zC3">
-                                <rect key="frame" x="154" y="338" width="113" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0G5-Ql-zC3">
+                                <rect key="frame" x="150" y="221" width="113" height="30"/>
                                 <state key="normal" title="Play Local Video"/>
                                 <connections>
                                     <segue destination="nOl-Ng-GFb" kind="show" id="Pz8-9i-aiG"/>
@@ -33,6 +33,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OF5-ck-VeF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="J2h-2g-yWD"/>
+                            <constraint firstItem="0G5-Ql-zC3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Stb-Zc-b5I"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="play_button" destination="OF5-ck-VeF" id="PjL-8F-7kT"/>

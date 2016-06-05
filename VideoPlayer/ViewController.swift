@@ -47,6 +47,9 @@ class ViewController: UIViewController {
         //let url = NSURL(string:
         //    "http://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v")
         
+        play_button.layer.cornerRadius = 5
+        play_local_button.layer.cornerRadius = 5
+        
     }
     
     @IBAction func play_online_video(sender: AnyObject) {
@@ -92,15 +95,7 @@ class ViewController: UIViewController {
         view.addSubview(loadingIndicatorView)
         self.player.addObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp",
                              options: NSKeyValueObservingOptions.New, context: playbackLikelyToKeepUpContext)
-        /*
-        self.player = AVPlayer(URL: videoURL!)
-        self.av_player_view_controller.player = self.player
-        self.playerLayer = AVPlayerLayer(player: player)
-        self.playerLayer.frame = self.view.bounds
-        self.view.layer.addSublayer(playerLayer)
-        self.player.play()
-        */
-        //create_video_controls()
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.destroyVideoPlayer(_:)),
                                                          name: AVPlayerItemDidPlayToEndTimeNotification, object: self.player.currentItem)
         print(self.height, self.width, self.screenSize)
@@ -182,16 +177,7 @@ class ViewController: UIViewController {
         let elapsedTime: Float64 = videoDuration * Float64(seekSlider.value)
         updateTimeLabel(elapsedTime, duration: videoDuration)
     }
-    /*
-    
-    // Force the view into landscape mode (which is how most video media is consumed.)
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        var orientation = UIInterfaceOrientationMask()
-        orientation = [UIInterfaceOrientationMask.Landscape, UIInterfaceOrientationMask.PortraitUpsideDown]
-        return orientation
-    }
- */
-    
+
     func invisibleButtonTapped(sender: UIButton!) {
         let playerIsPlaying:Bool = self.player.rate > 0
         if (playerIsPlaying) {
@@ -199,39 +185,6 @@ class ViewController: UIViewController {
         } else {
             self.player.play();
         }
-    }
-    
-    func create_video_controls() {
-        pause_button.hidden = false
-        pause_button.backgroundColor = .blueColor()
-        pause_button.layer.cornerRadius = 5
-        pause_button.setTitle("Pause", forState: .Normal)
-        pause_button.addTarget(self, action: #selector(pauseButtonAction), forControlEvents: .TouchUpInside)
-        self.view.addSubview(pause_button)
-        
-        resume_button.hidden = false
-        resume_button.backgroundColor = .blueColor()
-        resume_button.layer.cornerRadius = 5
-        resume_button.setTitle("Play", forState: .Normal)
-        resume_button.addTarget(self, action: #selector(resumeButtonAction), forControlEvents: .TouchUpInside)
-        self.view.addSubview(resume_button)
-
-        destroy_video_player_button.hidden = false
-        destroy_video_player_button.backgroundColor = .blueColor()
-        destroy_video_player_button.layer.cornerRadius = 5
-        destroy_video_player_button.setTitle("Close", forState: .Normal)
-        destroy_video_player_button.addTarget(self, action: #selector(destroyVideoPlayer), forControlEvents: .TouchUpInside)
-        self.view.addSubview(destroy_video_player_button)
-    }
-    
-    func pauseButtonAction(sender: UIButton!) {
-        print("Video Paused")
-        self.player.pause()
-    }
-    
-    func resumeButtonAction(sender: UIButton!) {
-        print("Video resumed")
-        self.player.play()
     }
     
     func destroyVideoPlayer(sender: UIButton!) {

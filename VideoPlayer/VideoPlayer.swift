@@ -20,12 +20,15 @@ class VideoPlayer: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        video_player_header.font = UIFont (name: "Helvetica Neue", size: 30)
+        video_player_header.textAlignment = NSTextAlignment.Center;
+        play_button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+        getFiles()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        getFiles()
     }
     
     
@@ -61,11 +64,16 @@ class VideoPlayer: UIViewController {
             listOfFiles.append(file as! String)
         }
         
-        file_list.text = String(listOfFiles)
+        file_list.text = "Local Files: " + String(listOfFiles)
         file_list.textAlignment = NSTextAlignment.Center
         file_list.numberOfLines = 10
     }
     
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        var orientation = UIInterfaceOrientationMask()
+        orientation = [UIInterfaceOrientationMask.Portrait, UIInterfaceOrientationMask.PortraitUpsideDown]
+        return orientation
+    }
     
 }
 

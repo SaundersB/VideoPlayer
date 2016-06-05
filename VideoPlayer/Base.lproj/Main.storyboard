@@ -18,17 +18,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OF5-ck-VeF">
-                                <rect key="frame" x="150" y="108" width="120" height="30"/>
+                                <rect key="frame" x="143" y="108" width="137" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Play Online Video"/>
                                 <connections>
                                     <action selector="play_online_video:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XqP-7N-VRm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0G5-Ql-zC3">
-                                <rect key="frame" x="150" y="221" width="113" height="30"/>
+                                <rect key="frame" x="143" y="221" width="137" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Play Local Video"/>
                                 <connections>
-                                    <segue destination="nOl-Ng-GFb" kind="show" id="Pz8-9i-aiG"/>
+                                    <segue destination="nOl-Ng-GFb" kind="show" id="z4s-so-rlh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -40,7 +44,7 @@
                     </view>
                     <connections>
                         <outlet property="play_button" destination="OF5-ck-VeF" id="PjL-8F-7kT"/>
-                        <outlet property="play_local_button" destination="0G5-Ql-zC3" id="mDi-35-SSa"/>
+                        <outlet property="play_local_button" destination="0G5-Ql-zC3" id="Pbr-Ar-Udy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -71,7 +75,7 @@
                                 <rect key="frame" x="187" y="517" width="51" height="30"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
-                                    <action selector="play_video:" destination="nOl-Ng-GFb" eventType="touchUpInside" id="Cc9-9s-1rF"/>
+                                    <action selector="play_video:" destination="nOl-Ng-GFb" eventType="touchUpInside" id="NUF-pt-Del"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2i9-Zw-6OH">
@@ -100,9 +104,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="file_list" destination="2i9-Zw-6OH" id="7xA-HB-83v"/>
-                        <outlet property="play_button" destination="9nc-vB-5kD" id="ayq-MK-7En"/>
-                        <outlet property="video_player_header" destination="mts-4o-XGi" id="82K-Fq-ASK"/>
+                        <outlet property="file_list" destination="2i9-Zw-6OH" id="gdM-05-GRA"/>
+                        <outlet property="play_button" destination="9nc-vB-5kD" id="fIf-3S-tRr"/>
+                        <outlet property="video_player_header" destination="mts-4o-XGi" id="7gG-1x-riF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iad-LS-IEb" userLabel="First Responder" sceneMemberID="firstResponder"/>

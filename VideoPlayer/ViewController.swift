@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     var timeRemainingLabel: UILabel = UILabel()
     var seekSlider: UISlider = UISlider()
     var playerRateBeforeSeek: Float = 0
+    var loadingIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+    let playbackLikelyToKeepUpContext = UnsafeMutablePointer<(Void)>()
     
     // Video Player
     var player = AVPlayer()
@@ -85,6 +87,11 @@ class ViewController: UIViewController {
         seekSlider.addTarget(self, action: #selector(ViewController.sliderEndedTracking(_:)),forControlEvents: UIControlEvents.TouchUpInside)
         seekSlider.addTarget(self, action: #selector(ViewController.sliderValueChanged(_:)),
                              forControlEvents: UIControlEvents.ValueChanged)
+        
+        loadingIndicatorView.hidesWhenStopped = true
+        view.addSubview(loadingIndicatorView)
+        self.player.addObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp",
+                             options: NSKeyValueObservingOptions.New, context: playbackLikelyToKeepUpContext)
         /*
         self.player = AVPlayer(URL: videoURL!)
         self.av_player_view_controller.player = self.player
@@ -97,6 +104,18 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.destroyVideoPlayer(_:)),
                                                          name: AVPlayerItemDidPlayToEndTimeNotification, object: self.player.currentItem)
         print(self.height, self.width, self.screenSize)
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>)
+    {
+        
+        if (context == playbackLikelyToKeepUpContext) {
+            if (self.player.currentItem!.playbackLikelyToKeepUp) {
+                loadingIndicatorView.stopAnimating()
+            } else {
+                loadingIndicatorView.startAnimating()
+            }
+        }
     }
     
     private func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
@@ -114,10 +133,13 @@ class ViewController: UIViewController {
     
     deinit {
         self.player.removeTimeObserver(timeObserver)
+        self.player.removeObserver(self, forKeyPath: "currentItem.playbackLikelyToKeepUp")
+
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        loadingIndicatorView.startAnimating()
         self.player.play() // Start the playback
     }
     
@@ -132,6 +154,7 @@ class ViewController: UIViewController {
         let controlsY: CGFloat = view.bounds.size.height - controlsHeight;
         timeRemainingLabel.frame = CGRect(x: 5, y: controlsY, width: 60, height: controlsHeight)
         seekSlider.frame = CGRect(x: timeRemainingLabel.frame.origin.x + timeRemainingLabel.bounds.size.width, y: controlsY, width: view.bounds.size.width - timeRemainingLabel.bounds.size.width - 5, height: controlsHeight)
+        loadingIndicatorView.center = CGPoint(x: CGRectGetMidX(view.bounds), y: CGRectGetMidY(view.bounds))
     }
     
     func sliderBeganTracking(slider: UISlider!) {
@@ -223,6 +246,7 @@ class ViewController: UIViewController {
         pause_button.hidden = true
         resume_button.hidden = true
         destroy_video_player_button.hidden = true
+        seekSlider.hidden = true
     }
     
     
